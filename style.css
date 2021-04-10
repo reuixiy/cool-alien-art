@@ -26,6 +26,7 @@ h1 {
 
 .try {
   display: flex;
+  align-items: center;
 }
 
 textarea {
