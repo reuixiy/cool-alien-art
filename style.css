@@ -1,23 +1,49 @@
 body {
+  font-family: monospace;
+  word-wrap: break-word;
   position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
   width: 100%;
   height: 100%;
   margin: 0;
+  overflow: hidden;
 }
 
-ul {
+aside {
+  position: absolute;
+  top: 0;
+  left: 0;
   margin: 2em;
-  padding: 1em 2em;
+  padding: 2em;
   background-color: hsla(0, 0%, 100%, 0.5);
   backdrop-filter: saturate(180%) blur(1em);
   -webkit-backdrop-filter: saturate(180%) blur(1em);
+  cursor: move;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+.try {
+  display: flex;
+}
+
+textarea {
+  width: 60%;
+  height: 4em;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
 }
 
 li {
   list-style: none;
-  font-family: monospace;
-  font-size: 1.5em;
+}
+
+@media (max-width: 768px) {
+  aside {
+    position: relative;
+  }
 }
