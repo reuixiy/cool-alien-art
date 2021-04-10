@@ -53,3 +53,9 @@ li {
     position: relative;
   }
 }
+
+@supports not ((backdrop-filter: none) or (-webkit-backdrop-filter: none)) {
+  aside {
+    background-color: hsla(0, 0%, 100%, 0.8);
+  }
+}
