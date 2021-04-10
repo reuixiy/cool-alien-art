@@ -1,8 +1,9 @@
 const canvas = document.createElement('canvas');
 
-const pattern = '((x - 128) * 64) % (y - 128)';
+let pattern = '((x - 128) * 64) % (y - 128)';
+let isColor = true;
 
-function draw(patternInput) {
+function draw() {
   const width = (canvas.width = window.innerWidth);
   const height = (canvas.height = window.innerHeight);
 
@@ -10,8 +11,8 @@ function draw(patternInput) {
 
   for (let x = 0; x < 256; x++) {
     for (let y = 0; y < 256; y++) {
-      if (eval(patternInput || pattern)) {
-        ctx.fillStyle = `hsl(${y}, 100%, 50%)`;
+      if (eval(pattern)) {
+        ctx.fillStyle = isColor ? `hsl(${y}, 100%, 50%)` : '';
         ctx.fillRect(
           x * 4 * (width / 1024),
           y * 4 * (height / 1024),
@@ -38,18 +39,22 @@ window.addEventListener('resize', () => {
 function initUI() {
   draggable(document.querySelector('aside'));
 
+  const textarea = document.querySelector('textarea');
   const drawButton = document.querySelector('#draw');
   const downloadButton = document.querySelector('#download');
-  const textarea = document.querySelector('textarea');
-
-  drawButton.addEventListener('click', () => {
-    draw(textarea.value);
-  });
+  const color = document.querySelector('#color');
 
   textarea.addEventListener('mousedown', (e) => {
     e.stopPropagation();
   });
 
+  // draw
+  drawButton.addEventListener('click', () => {
+    pattern = textarea.value;
+    draw();
+  });
+
+  // download
   downloadButton.addEventListener('click', () => {
     const a = document.createElement('a');
 
@@ -58,6 +63,12 @@ function initUI() {
     a.target = '_blank';
 
     a.click();
+  });
+
+  // color
+  color.addEventListener('click', (e) => {
+    isColor = e.target.checked;
+    draw();
   });
 }
 

@@ -33,6 +33,11 @@ textarea {
   height: 4em;
 }
 
+label {
+  display: flex;
+  align-items: center;
+}
+
 ul {
   margin: 0;
   padding: 0;
