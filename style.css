@@ -26,12 +26,17 @@ h1 {
 
 .try {
   display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
 textarea {
   width: 60%;
   height: 4em;
+}
+
+button {
+  margin-left: 0.5em;
 }
 
 label {
